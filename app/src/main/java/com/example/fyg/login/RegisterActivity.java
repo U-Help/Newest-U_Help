@@ -44,11 +44,150 @@ public class RegisterActivity extends AppCompatActivity {
         editUsername=findViewById(R.id.editUsename);
         editPassword=findViewById(R.id.editpassword);
         editTelephone=findViewById(R.id.editTelephone);
+        initView();
 
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 judge();
+            }
+        });
+    }
+
+    private void initView(){
+        //设置焦点事件
+        editEmail.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                // TODO Auto-generated method stub
+                if(hasFocus){
+                    //这里加入name获取焦点事件时所要实现的逻辑
+                }else{
+                    //这里加入name失去焦点事件时所要实现的逻辑str
+                    checkEmail();
+                }
+            }
+        });
+        editUsername.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                // TODO Auto-generated method stub
+                if(hasFocus){
+                    //这里加入name获取焦点事件时所要实现的逻辑
+                }else{
+                    //这里加入name失去焦点事件时所要实现的逻辑str
+                    checkUsername();
+                }
+            }
+        });
+    }
+
+    public void checkEmail() {
+        OkHttpClient client = new OkHttpClient();
+        String Email = editEmail.getText().toString();;
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("email", Email);
+        JSONObject jsonObject = new JSONObject(map);
+        String jsonStr = jsonObject.toString();
+        RequestBody body = RequestBody.create(JSON, jsonStr);
+        Request request = new Request.Builder()
+                .url("http://47.100.116.160:5000/user/email")
+                .post(body)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Looper.prepare();
+                Toast.makeText(RegisterActivity.this, "Register Failed", Toast.LENGTH_LONG).show();
+                Looper.loop();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    boolean flag = false;
+                    try {
+                        String str = response.body().string();
+
+                        JSONObject jsonStr = new JSONObject(str);
+
+                        if (jsonStr.getString("state").equals("success")) {
+                            flag = true;
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    if (flag) {
+                        Looper.prepare();
+                        Looper.loop();
+                    } else {
+                        Looper.prepare();
+                        Toast.makeText(RegisterActivity.this, "邮箱已存在", Toast.LENGTH_LONG).show();
+                        Looper.loop();
+                    }
+                } else {
+                    Looper.prepare();
+                    Toast.makeText(RegisterActivity.this, "Register Response Failed " + response.body().string(), Toast.LENGTH_LONG).show();
+                    Looper.loop();
+                }
+            }
+        });
+    }
+
+    public void checkUsername() {
+        OkHttpClient client = new OkHttpClient();
+        String Email = editUsername.getText().toString();
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("username", Email);
+        JSONObject jsonObject = new JSONObject(map);
+        String jsonStr = jsonObject.toString();
+        RequestBody body = RequestBody.create(JSON, jsonStr);
+        Request request = new Request.Builder()
+                .url("http://47.100.116.160:5000/user/username")
+                .post(body)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Looper.prepare();
+                Toast.makeText(RegisterActivity.this, "Register Failed", Toast.LENGTH_LONG).show();
+                Looper.loop();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    boolean flag = false;
+                    try {
+                        String str = response.body().string();
+
+                        JSONObject jsonStr = new JSONObject(str);
+
+                        if (jsonStr.getString("state").equals("success")) {
+                            flag = true;
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    if (flag) {
+                        Looper.prepare();
+                        Looper.loop();
+                    } else {
+                        Looper.prepare();
+                        Toast.makeText(RegisterActivity.this, "用户名已存在", Toast.LENGTH_LONG).show();
+                        Looper.loop();
+                    }
+                } else {
+                    Looper.prepare();
+                    Toast.makeText(RegisterActivity.this, "Register Response Failed " + response.body().string(), Toast.LENGTH_LONG).show();
+                    Looper.loop();
+                }
             }
         });
     }

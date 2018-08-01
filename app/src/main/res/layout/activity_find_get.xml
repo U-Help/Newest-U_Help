@@ -26,7 +26,7 @@
         android:id="@+id/btnCancel"
         android:layout_width="120dp"
         android:layout_height="70dp"
-        android:layout_alignEnd="@+id/editTelephone"
+        android:layout_alignEnd="@+id/editDstplace"
         android:layout_alignTop="@+id/btnPush"
         android:background="@drawable/change_color_btn"
         android:gravity="center"
@@ -39,25 +39,23 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="38dp" />
+        android:layout_centerHorizontal="true" />
 
 
     <EditText
-        android:id="@+id/editTelephone"
+        android:id="@+id/editDstplace"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@+id/textView6"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:background="@drawable/edit_bg"
         android:ems="10"
         android:gravity="fill_vertical"
-        android:hint="请输入手机号码"
-        android:inputType="phone"
+        android:hint="请输入收货地址"
+        android:inputType="none"
         android:paddingLeft="10dp" />
 
     <EditText
-        android:id="@+id/editPassword"
+        android:id="@+id/editRecePassword"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@+id/textView3"
@@ -73,7 +71,8 @@
         android:id="@+id/editTime"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/edit_bg"
         android:ems="10"
         android:gravity="fill_vertical"
@@ -82,11 +81,39 @@
         android:paddingLeft="10dp" />
 
     <EditText
+        android:id="@+id/editSize"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="166dp"
+        android:background="@drawable/edit_bg"
+        android:ems="10"
+        android:gravity="fill_vertical"
+        android:hint="请输入货物大小"
+        android:inputType="text"
+        android:paddingLeft="10dp" />
+
+    <EditText
+        android:id="@+id/editPrice"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_above="@+id/btnPush"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/edit_bg"
+        android:ems="10"
+        android:gravity="fill_vertical"
+        android:hint="请输入价格"
+        android:inputType="text"
+        android:paddingLeft="10dp" />
+
+    <EditText
         android:id="@+id/editAddress"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp"
         android:background="@drawable/edit_bg"
         android:ems="10"
         android:gravity="fill_vertical"
@@ -94,7 +121,7 @@
         android:paddingLeft="10dp" />
 
 
-    <TextView
+    <!--<TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,16 +129,16 @@
         android:layout_alignStart="@+id/editTelephone"
         android:text="请选择收货地址"
         android:textColor="#000"
-        android:textSize="18sp" />
+        android:textSize="18sp" />-->
 
-    <Spinner
+    <!--<Spinner
         android:id="@+id/spin"
         android:layout_width="212dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/editTelephone"
         android:layout_marginBottom="152dp"
-        android:spinnerMode="dialog" />
+        android:spinnerMode="dialog" />-->
 
     <TextView
         android:id="@+id/textView2"

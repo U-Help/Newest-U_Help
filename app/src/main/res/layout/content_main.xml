@@ -17,7 +17,7 @@
         android:layout_marginBottom="70dp"
         android:layout_toEndOf="@+id/textView9"
         android:background="@drawable/change_color_button_content_main"
-        android:text="我要取件"
+        android:text="找人取件"
         android:textColor="#ffffffff"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="0dp"

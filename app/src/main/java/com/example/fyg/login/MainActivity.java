@@ -94,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
 
                         if (jsonStr.getString("state").equals("success")) {
                             flag = true;
+                            User user=new User();
+                            user.id=jsonStr.getInt("id");
+                            user.token=jsonStr.getString("token");
+                            System.out.println(User.id);
+                            System.out.println(user.token);
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

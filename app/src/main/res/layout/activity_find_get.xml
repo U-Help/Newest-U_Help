@@ -76,7 +76,7 @@
         android:background="@drawable/edit_bg"
         android:ems="10"
         android:gravity="fill_vertical"
-        android:hint="请输入收货时间"
+        android:hint="请输入收货时间  例：2018-8-1 9:30"
         android:inputType="textPersonName"
         android:paddingLeft="10dp" />
 

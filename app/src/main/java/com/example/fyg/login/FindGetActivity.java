@@ -66,7 +66,8 @@ public class FindGetActivity extends AppCompatActivity {
         btnPush = findViewById(R.id.btnPush);
         btnPush.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                judge();
+                //judge();
+                push();
             }
         });
         editAddress = findViewById(R.id.editAddress);
@@ -90,7 +91,7 @@ public class FindGetActivity extends AppCompatActivity {
         mSpinner.setOnItemSelectedListener(this);*/
     }
 
-    public void judge(){
+    /*public void judge(){
         String time=editTime.getText().toString();
         if(isTime(time)==false) {
             tv = (TextView) findViewById(R.id.tv);
@@ -104,7 +105,7 @@ public class FindGetActivity extends AppCompatActivity {
     public static boolean isTime(String time) {
         String REGEX_TIME = "^\\d{4}-\\d{1,2}-\\d{1,2} \\d{1,2}:\\d{1,2}$";
         return Pattern.matches(REGEX_TIME, time);
-    }
+    }*/
 
     public void push(){
         OkHttpClient client = new OkHttpClient();
@@ -141,7 +142,7 @@ public class FindGetActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 Looper.prepare();
-                Toast.makeText(FindGetActivity.this, "发布失败", Toast.LENGTH_LONG).show();
+                Toast.makeText(FindGetActivity.this, "未连接到服务器", Toast.LENGTH_LONG).show();
                 Looper.loop();
             }
 
